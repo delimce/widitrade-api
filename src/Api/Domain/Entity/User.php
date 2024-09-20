@@ -8,6 +8,7 @@ use Ramsey\Uuid\Uuid;
 use App\Api\Domain\Dto\UserDto;
 use Doctrine\ORM\Mapping as ORM;
 use App\Api\Infrastructure\Repository\UserRepository;
+use Doctrine\ORM\Mapping\PreUpdate;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: "user")]
@@ -99,8 +100,21 @@ class User
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTime $updatedAt): void
+    # on update
+    public function setName(string $name): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->name = $name;
     }
+
+    public function setUsername(string $username): void
+    {
+        $this->username = $username;
+    }
+
+    #[PreUpdate]
+    public function setUpdatedAt(): void
+    {
+        $this->updatedAt = new \DateTime();
+    }
+
 }

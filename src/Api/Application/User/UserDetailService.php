@@ -28,6 +28,7 @@ class UserDetailService
             'username' => $user->getUsername(),
             'email'    => $user->getEmail(),
             'created'  => $user->getCreatedAt()->format('Y-m-d H:i:s'),
+            'updated'  => $user->getUpdatedAt()?->format('Y-m-d H:i:s'),
             'ts'       => time(),
         ];
     }
