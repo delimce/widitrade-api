@@ -22,3 +22,16 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Api\Application\System\SystemService:
+        arguments:
+            $databaseConnector: '@App\Shared\Infrastructure\Doctrine\DBalConnector'
+
+    App\Shared\Infrastructure\JwtTokenHandler:
+        arguments:
+            $secret: "%env(JWT_SECRET_KEY)%"
+
+    App\Shared\Infrastructure\TokenValidationHandler:
+        arguments:
+            $tokenHandler: '@App\Shared\Infrastructure\JwtTokenHandler'
+            $userRepository: '@App\Api\Infrastructure\Repository\UserRepository'
