@@ -31,7 +31,11 @@ services:
         arguments:
             $secret: "%env(JWT_SECRET_KEY)%"
 
+    App\Shared\Infrastructure\FileLocalStorageHandler:
+        arguments:
+            $storagePath: '%kernel.project_dir%/var/storage'
+
     App\Shared\Infrastructure\TokenValidationHandler:
         arguments:
             $tokenHandler: '@App\Shared\Infrastructure\JwtTokenHandler'
-            $userRepository: '@App\Api\Infrastructure\Repository\UserRepository'
+            $userRepository: '@App\Api\Infrastructure\Repository\Orm\UserRepository'

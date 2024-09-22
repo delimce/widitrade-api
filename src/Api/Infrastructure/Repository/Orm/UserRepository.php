@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Api\Infrastructure\Repository;
+namespace App\Api\Infrastructure\Repository\Orm;
 
 use App\Api\Domain\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
