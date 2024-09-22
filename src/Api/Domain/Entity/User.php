@@ -7,8 +7,9 @@ namespace App\Api\Domain\Entity;
 use Ramsey\Uuid\Uuid;
 use App\Api\Domain\Dto\UserDto;
 use Doctrine\ORM\Mapping as ORM;
-use App\Api\Infrastructure\Repository\UserRepository;
 use Doctrine\ORM\Mapping\PreUpdate;
+use Doctrine\Common\Collections\ArrayCollection;
+use App\Api\Infrastructure\Repository\Orm\UserRepository;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: "user")]
@@ -42,6 +43,11 @@ class User
     #[ORM\Column(nullable: true)]
     private ?\DateTime $updatedAt = null;
 
+    #[ORM\ManyToMany(targetEntity: Content::class)]
+    #[ORM\JoinTable(name: "user_content_owner")]
+    #[ORM\JoinColumn(name: "user_id", referencedColumnName: "id")]
+    #[ORM\InverseJoinColumn(name: "content_id", referencedColumnName: "id")]
+    private $contents;
 
     public static function createFromDto(UserDto $userDto): self
     {
@@ -53,6 +59,11 @@ class User
         $user->password  =      $userDto->getPassword();
         $user->createdAt = new \DateTimeImmutable();
         return $user;
+    }
+
+    public function __construct()
+    {
+        $this->contents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -116,5 +127,16 @@ class User
     {
         $this->updatedAt = new \DateTime();
     }
+
+    public function getContents()
+    {
+        return $this->contents;
+    }
+
+    public function addContent(Content $content): void
+    {
+        $this->contents[] = $content;
+    }
+
 
 }
