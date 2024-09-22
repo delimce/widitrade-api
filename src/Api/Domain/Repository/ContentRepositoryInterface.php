@@ -12,7 +12,7 @@ interface ContentRepositoryInterface
 
     public function flush(): void;
 
-    public function findByCriteria(array $criteria, array $orderBy = null): array;
+    public function listAll(string $filter = null): array;
 
     public function findByUid(string $uid): ?Content;
 

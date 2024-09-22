@@ -26,9 +26,14 @@ class ContentRepository extends ServiceEntityRepository implements ContentReposi
         $this->getEntityManager()->flush();
     }
 
-    public function findByCriteria(array $criteria, ?array $orderBy = null): array
+    public function listAll(string $filter = null): array
     {
-        return parent::findBy($criteria, $orderBy);
+        $qb = $this->createQueryBuilder('c');
+        if (null !== $filter) {
+            $qb->where('c.title LIKE :filter')->orWhere('c.description LIKE :filter')
+            ->setParameter('filter', "%$filter%");
+        }
+        return $qb->getQuery()->getResult();
     }
 
     public function findByUid(string $uid): ?Content
