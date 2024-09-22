@@ -16,6 +16,10 @@ class ContentDetailService
     {
         $content = $this->contentRepository->findByUid($uid);
 
+        if ($content === null) {
+            throw new \DomainException('Content not found', 404);
+        }
+
         return [
             'uid'         => $content->getUid(),
             'title'       => $content->getTitle(),

@@ -83,9 +83,19 @@ class Content
         return $this->title;
     }
 
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
     public function getDescription(): string
     {
         return $this->description;
+    }
+
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
     }
 
     public function getCreatedAt(): \DateTimeImmutable
@@ -98,6 +108,11 @@ class Content
         return $this->updatedAt;
     }
 
+    public function setUpdatedAt(): void
+    {
+        $this->updatedAt = new \DateTime();
+    }
+
     public function getMedia(): array
     {
         return $this->media->toArray();
@@ -108,6 +123,15 @@ class Content
         if (!$this->media->contains($media)) {
             $this->media->add($media);
             $media->setContent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAllMedia(): static
+    {
+        foreach ($this->media as $media) {
+            $this->media->removeElement($media);
         }
 
         return $this;

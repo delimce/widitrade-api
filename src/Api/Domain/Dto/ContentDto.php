@@ -33,8 +33,10 @@ class ContentDto extends BaseDto
         }
     }
 
-
-
+    public function getUid(): ?string
+    {
+        return $this->uid;
+    }
 
     public function getTitle(): string
     {
