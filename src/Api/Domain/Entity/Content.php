@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Api\Domain\Dto\ContentDto;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Api\Domain\Entity\UserContentInteraction;
 use App\Api\Infrastructure\Repository\Orm\ContentRepository;
 
 #[ORM\Entity(repositoryClass: ContentRepository::class)]
@@ -43,6 +44,15 @@ class Content
         cascade: ["persist", "remove"]
     )]
     private Collection $media;
+
+
+    #[ORM\OneToMany(
+        mappedBy: "content",
+        targetEntity: UserContentInteraction::class,
+        orphanRemoval: true,
+        cascade: ["persist", "remove"]
+    )]
+    private Collection $interactions;
 
     public function __construct()
     {
@@ -135,5 +145,19 @@ class Content
         }
 
         return $this;
+    }
+
+
+    public function getRanked(): float
+    {
+        $total = 0;
+        $count = 0;
+        foreach ($this->interactions as $interaction) {
+            $total += $interaction->getRanked() ?? 0;
+            if (!is_null($interaction->getRanked())) $count++;
+        }
+
+        if ($count === 0) return 0;
+        return round($total / $count, 1);
     }
 }

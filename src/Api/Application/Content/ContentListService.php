@@ -23,6 +23,7 @@ class ContentListService
                 'title'       => $content->getTitle(),
                 'description' => $content->getDescription(),
                 'media'       => $content->getMedia(),
+                'ranked'      => $content->getRanked(),
                 'created'     => $content->getCreatedAt()->format('Y-m-d H:i:s'),
                 'updated'     => $content->getUpdatedAt()?->format('Y-m-d H:i:s'),
             ];
