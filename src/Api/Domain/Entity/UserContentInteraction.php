@@ -35,12 +35,22 @@ class UserContentInteraction
     #[ORM\Column(type: "integer", nullable: true)]
     private ?int $ranked;
 
-    public function __construct(Content $content, User $user, ?bool $isFavorite, ?int $ranked)
+    public function __construct(Content $content, User $user, ?bool $isFavorite = null, ?int $ranked = null)
     {
         $this->content    = $content;
         $this->user       = $user;
         $this->isFavorite = $isFavorite;
         $this->ranked     = $ranked;
+    }
+
+    public function setRanked(int $ranked): void
+    {
+        $this->ranked = $ranked;
+    }
+
+    public function setIsFavorite(bool $isFavorite): void
+    {
+        $this->isFavorite = $isFavorite;
     }
 
     public function getContent(): Content
