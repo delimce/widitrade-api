@@ -20,6 +20,10 @@ class ContentCreateService
     {
         $user = $this->userRepository->findByUid($userUid);
 
+        if ($user === null) {
+            throw new \DomainException('User not found or wrong user token', 404);
+        }
+
         $content = Content::createFromDto($dto);
         $this->contentRepository->persist($content);
 
