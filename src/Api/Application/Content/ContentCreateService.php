@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Api\Application\Content;
 
+use App\Api\Domain\Dto\MediaDto;
 use App\Api\Domain\Dto\ContentDto;
 use App\Api\Domain\Entity\Content;
-use App\Api\Domain\Repository\ContentRepositoryInterface;
 use App\Api\Domain\Repository\UserRepositoryInterface;
+use App\Api\Domain\Repository\ContentRepositoryInterface;
 
 class ContentCreateService
 {
@@ -36,7 +37,7 @@ class ContentCreateService
             'uid'         => $content->getUid(),
             'title'       => $content->getTitle(),
             'description' => $content->getDescription(),
-            'media'       => $content->getMedia(),
+            'media'       => MediaDto::showDetail($content->getMedia()),
             'ts'          => time(),
         ];
     }

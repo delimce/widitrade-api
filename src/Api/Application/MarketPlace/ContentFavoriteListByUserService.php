@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Api\Application\MarketPlace;
 
+use App\Api\Domain\Dto\MediaDto;
 use App\Api\Domain\Entity\User;
-use App\Api\Domain\Entity\Content;
 use App\Api\Domain\Entity\UserContentInteraction;
 use App\Api\Domain\Repository\UserRepositoryInterface;
 use App\Api\Domain\Repository\ContentRepositoryInterface;
@@ -37,11 +37,13 @@ class ContentFavoriteListByUserService
         
         foreach ($favorites as $fav) {
             $content = $fav->getContent();
+            $media = $content->getMedia();
             $result[] = [
                 'uid'         => $content->getUid(),
                 'title'       => $content->getTitle(),
                 'description' => $content->getDescription(),
                 'ranked'      => $content->getRanked(),
+                'media'       => MediaDto::showDetail($content->getMedia()),
             ];
         }
 
