@@ -29,6 +29,7 @@ readonly class UserUpdateService
 
         $user->setName($userDto->getName());
         $user->setUsername($userDto->getUsername());
+        $user->setEmail($userDto->getEmail()); //@todo: verified new email does not exist in the database
 
         # hash password
         $passwordEncrypted = $this->passwordHasher->hash($userDto->getPassword());
