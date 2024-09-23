@@ -1,0 +1,555 @@
+{
+	"info": {
+		"_postman_id": "ca2906b3-67a0-4891-a2ac-9ff65f4b77c7",
+		"name": "widitrade-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9418431"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jhon Doe\",\n    \"username\": \"jdoe\",\n    \"email\": \"jdhoe@email.com\",\n    \"password\": \"my_secret_password_here\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/register",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"jdhoe@email.com\",\n    \"password\": \"my_secret_password_here\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/login",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxM2FiOTY0My0zOGZkLTRmY2UtOWNiYS1mMjdjMGM1NGRlYmQiLCJlbWFpbCI6ImpkaG9lQGVtYWlsLmNvbSIsImNyZWF0ZWQiOjE3MjY4NDM3MDR9.WXi8CJVwk6o1BkfWhmIMdfwsj7sRuscim9WMoFsQqRU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/user",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxM2FiOTY0My0zOGZkLTRmY2UtOWNiYS1mMjdjMGM1NGRlYmQiLCJlbWFpbCI6ImpkaG9lQGVtYWlsLmNvbSIsImNyZWF0ZWQiOjE3MjY4NDM3MDR9.WXi8CJVwk6o1BkfWhmIMdfwsj7sRuscim9WMoFsQqRU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jhon Martin\",\n    \"username\": \"jmartin\",\n    \"email\": \"jdhoe@email.com\",\n    \"password\": \"My_new_password_here\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/user",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Content",
+			"item": [
+				{
+					"name": "upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/delimce/Pictures/miquiniela_logo.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/upload",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "content",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxM2FiOTY0My0zOGZkLTRmY2UtOWNiYS1mMjdjMGM1NGRlYmQiLCJlbWFpbCI6ImpkaG9lQGVtYWlsLmNvbSIsImNyZWF0ZWQiOjE3MjY4NDM3MDR9.WXi8CJVwk6o1BkfWhmIMdfwsj7sRuscim9WMoFsQqRU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"My Third product\",\n    \"description\": \"<h2>Some content for a Second product with images here!</h2>\",\n    \"media\":[\n        {\n            \"title\":\"product main image\",\n            \"filepath\":\"image/7da7fc15038b197703cf4807fa0f0a23.png\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/content",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"content"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "content",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxM2FiOTY0My0zOGZkLTRmY2UtOWNiYS1mMjdjMGM1NGRlYmQiLCJlbWFpbCI6ImpkaG9lQGVtYWlsLmNvbSIsImNyZWF0ZWQiOjE3MjY4NDM3MDR9.WXi8CJVwk6o1BkfWhmIMdfwsj7sRuscim9WMoFsQqRU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"My Second product\",\n    \"description\": \"<h2>Some content for a Second product with images here!</h2>\",\n    \"media\":[\n        {\n            \"title\":\"product 1 image\",\n            \"filepath\":\"image/7da7fc15038b197703cf4807fa0f0a23.png\"\n        },\n        {\n            \"title\":\"product 2 image\",\n            \"filepath\":\"image/7da7fc15038b197703cf4807fa0f0a23.png\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/content/:uid",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"content",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "aa4ddc89-f39e-40fd-b50b-3bc6968e1589"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "content",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxM2FiOTY0My0zOGZkLTRmY2UtOWNiYS1mMjdjMGM1NGRlYmQiLCJlbWFpbCI6ImpkaG9lQGVtYWlsLmNvbSIsImNyZWF0ZWQiOjE3MjY4NDM3MDR9.WXi8CJVwk6o1BkfWhmIMdfwsj7sRuscim9WMoFsQqRU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/content?filter=Third",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"content"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "Third"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "content by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxM2FiOTY0My0zOGZkLTRmY2UtOWNiYS1mMjdjMGM1NGRlYmQiLCJlbWFpbCI6ImpkaG9lQGVtYWlsLmNvbSIsImNyZWF0ZWQiOjE3MjY4NDM3MDR9.WXi8CJVwk6o1BkfWhmIMdfwsj7sRuscim9WMoFsQqRU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/content/:uid",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"content",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "8feec4b9-e7f9-4e8d-8bf9-63e11307e945"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "content",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxM2FiOTY0My0zOGZkLTRmY2UtOWNiYS1mMjdjMGM1NGRlYmQiLCJlbWFpbCI6ImpkaG9lQGVtYWlsLmNvbSIsImNyZWF0ZWQiOjE3MjY4NDM3MDR9.WXi8CJVwk6o1BkfWhmIMdfwsj7sRuscim9WMoFsQqRU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/content/:uid",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"content",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "8feec4b9-e7f9-4e8d-8bf9-63e11307e945"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Marketplace",
+			"item": [
+				{
+					"name": "content rated by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxM2FiOTY0My0zOGZkLTRmY2UtOWNiYS1mMjdjMGM1NGRlYmQiLCJlbWFpbCI6ImpkaG9lQGVtYWlsLmNvbSIsImNyZWF0ZWQiOjE3MjY4NDM3MDR9.WXi8CJVwk6o1BkfWhmIMdfwsj7sRuscim9WMoFsQqRU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rate\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/content/:uid/rate",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"content",
+								":uid",
+								"rate"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "aa4ddc89-f39e-40fd-b50b-3bc6968e1589"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "content favorite by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxM2FiOTY0My0zOGZkLTRmY2UtOWNiYS1mMjdjMGM1NGRlYmQiLCJlbWFpbCI6ImpkaG9lQGVtYWlsLmNvbSIsImNyZWF0ZWQiOjE3MjY4NDM3MDR9.WXi8CJVwk6o1BkfWhmIMdfwsj7sRuscim9WMoFsQqRU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/content/:uid/favorite",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"content",
+								":uid",
+								"favorite"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "aa4ddc89-f39e-40fd-b50b-3bc6968e1589"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "content favorite list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxM2FiOTY0My0zOGZkLTRmY2UtOWNiYS1mMjdjMGM1NGRlYmQiLCJlbWFpbCI6ImpkaG9lQGVtYWlsLmNvbSIsImNyZWF0ZWQiOjE3MjY4NDM3MDR9.WXi8CJVwk6o1BkfWhmIMdfwsj7sRuscim9WMoFsQqRU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "Http://127.0.0.1:8000/api/content/favorite",
+							"protocol": "Http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"content",
+								"favorite"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "check-status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "Http://127.0.0.1:8000/api/status",
+					"protocol": "Http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

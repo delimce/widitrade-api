@@ -25,10 +25,11 @@ This is the content api for widitrade. It is a RESTful API that provides content
 ## database structure
 
 The database is a sqlite database and has the following tables:
-![Database Structure](./docs/database_structure.png)
+![Database Structure](https://github.com/delimce/widitrade-api/blob/main/docs/database_er.png?raw=true)
 
 
 ## Api documentation
+![API Documentation](https://github.com/delimce/widitrade-api/blob/main/docs/api_endpoints.png?raw=true)
 
 ### endpoints list
 
@@ -49,3 +50,17 @@ The database is a sqlite database and has the following tables:
 [*] the endpoints that require authentication, need to have the Authorization header with the token value
 example:
 ```Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxM2FiOTY0My0zOGZkLTRmY2UtOWNiYS1mMjdjMGM1NGRlYmQiLCJlbWFpbCI6ImpkaG9lQGVtYWlsLmNvbSIsImNyZWF0ZWQiOjE3MjY4NDM3MDR9.WXi8CJVwk6o1BkfWhmIMdfwsj7sRuscim9WMoFsQqRU```
+
+### api base code structure
+This Api was build using hexagonal architecture, so the code is divided in the following layers:
+- Application: This layer contains the application services, that are used to interact with the domain layer
+- Domain: This layer contains the domain entities, value objects, and repositories interfaces
+- Infrastructure: This layer contains the infrastructure services, like the database, the file system, the jwt, contracts implementations, etc
+
+### bundle contexts
+- Shared: This bundle contains the shared code, focus in infrastructure, like the base controller, the base service, the base repository, ORM foundations etc
+- Api: This bundle contains the api business logic, uses user's cases objects, and the api specific services
+
+### POSTMAN COLLECTION
+You can find the postman collection in the following link: (note: environment file is not included)
+[Widitrade Postman Collection](https://github.com/delimce/widitrade-api/blob/main/docs/widitrade-api.postman_collection.json)
