@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Application\Content;
 
+use App\Api\Domain\Dto\MediaDto;
 use App\Api\Domain\Entity\Media;
 use App\Api\Domain\Dto\ContentDto;
 use App\Api\Domain\Repository\UserRepositoryInterface;
@@ -45,7 +46,7 @@ class ContentEditService
             'uid'         => $content->getUid(),
             'title'       => $content->getTitle(),
             'description' => $content->getDescription(),
-            'media'       => $content->getMedia(),
+            'media'       => MediaDto::showDetail($content->getMedia()),
             'ts'          => time(),
         ];
     }

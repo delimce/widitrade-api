@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Api\Domain\Dto;
 
 use App\Shared\Infrastructure\BaseDto;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class MediaDto extends BaseDto
@@ -29,5 +30,17 @@ class MediaDto extends BaseDto
     public function getFilepath(): string
     {
         return $this->filepath;
+    }
+
+    static public function showDetail(array $medias): array
+    {
+        $result = [];
+        foreach ($medias as $media) {
+            $result[] = [
+                'title'    => $media->getTitle(),
+                'filepath' => $media->getFilepath(),
+            ];
+        }
+        return $result;
     }
 }

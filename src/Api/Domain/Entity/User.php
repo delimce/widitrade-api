@@ -8,7 +8,9 @@ use Ramsey\Uuid\Uuid;
 use App\Api\Domain\Dto\UserDto;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\PreUpdate;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Api\Domain\Entity\UserContentInteraction;
 use App\Api\Infrastructure\Repository\Orm\UserRepository;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -48,6 +50,14 @@ class User
     #[ORM\JoinColumn(name: "user_id", referencedColumnName: "id")]
     #[ORM\InverseJoinColumn(name: "content_id", referencedColumnName: "id")]
     private $contents;
+
+    #[ORM\OneToMany(
+        mappedBy: "user",
+        targetEntity: UserContentInteraction::class,
+        orphanRemoval: true,
+        cascade: ["persist", "remove"]
+    )]
+    private Collection $interactions;
 
     public static function createFromDto(UserDto $userDto): self
     {
@@ -136,6 +146,11 @@ class User
     public function addContent(Content $content): void
     {
         $this->contents[] = $content;
+    }
+
+    public function getInteractions(): Collection
+    {
+        return $this->interactions;
     }
 
 
