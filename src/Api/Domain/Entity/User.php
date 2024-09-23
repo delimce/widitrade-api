@@ -148,5 +148,10 @@ class User
         $this->contents[] = $content;
     }
 
+    public function getInteractions(): Collection
+    {
+        return $this->interactions;
+    }
+
 
 }
